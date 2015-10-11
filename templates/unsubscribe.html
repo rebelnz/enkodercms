@@ -1,0 +1,33 @@
+{{ define "title" }}{{ .Meta.Title }}{{ end }}
+{{ define "metatags" }}{{ end }}
+{{ define "css" }}{{ end }}
+
+{{ define "main" }}
+{{ $fqdn := .Fqdn }}
+
+<header id="head" class="secondary"></header>
+<!-- container -->
+<div class="container">
+  <ol class="breadcrumb">
+	<li><a href="/">Home</a></li>
+	<li class="active">Unsubscribe</li>
+  </ol>
+
+  <div class="row">
+	<!-- Article main content -->
+	<article class="col-md-8 maincontent">
+	  <header class="page-header">
+		<h1 class="page-title">Thanks - you have been unsubscribed</h1>
+	  </header>
+      <p><a href="/">Return Home</a></p>
+	</article>
+	<!-- /Article -->
+	
+	<!-- Sidebar -->
+	<aside class="col-md-4 sidebar sidebar-right">
+	</aside>
+	<!-- /Sidebar -->
+  </div>
+</div>	<!-- /container -->
+
+{{ end }}{{ define "js" }}{{ end }}

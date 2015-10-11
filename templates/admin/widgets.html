@@ -1,0 +1,53 @@
+{{ define "css" }}
+<link rel="stylesheet" href="/static/css/custom/admin-widgets.css">
+{{ end }}
+
+{{ define "main" }}
+
+<div class="column-group">
+  <div class="all-50">
+    <h3>Widgets</h3>
+  </div>  
+  <div class="all-50">
+    <a href="/admin/newwidget" class="ink-button blue push-right">New Widget</a>
+  </div>
+</div>
+
+<div class="column-group gutters">
+  {{ if .Widgets }}
+  {{ range .Widgets }}
+  <div class="xlarge-25 large-33 medium-33 small-50 tiny-100 admin-pages">
+    <div class="panel">
+      <div class="panel-header">
+        <h4>{{ .Title }}</h4>
+      </div>
+      <div class="panel-body admin-widgets-preview">    
+        {{ if .Filename }}
+        {{ if fileicon .Filename }}
+        <p><i class="fa fa-file-{{ fileicon .Filename }}-o fa-3x"></i></p>
+        <p>[{{ .Filename }}]</p>
+        {{ else }}
+        <p><img src="/static/uploads/thumb_{{ .Filename }}" class="widget-thumbnail"/></p>
+        {{ end }} 
+        {{ end }} 
+        {{ .Content | unescaped }}
+      </div>
+      <div class="admin-widgets-preview-controls">
+        <ul>
+          <li><a href="/admin/editwidget/{{ .Id }}">edit </a></li>
+          <li><a href="/admin/deleteitem/widget/{{ .Id }}" class="delete-item">delete</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  {{ end }}
+  {{ else }}
+  <div class="all-100">
+    <p>No Widgets <a href="/admin/newwidget">Add one now</a></p>  
+  </div>
+  {{ end }}
+</div>
+{{ end }}
+
+{{ define "js" }}{{ end }}
+

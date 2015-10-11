@@ -1,0 +1,55 @@
+{{ define "metatags" }}
+<meta name="description" content="{{ .Settings.Keywords }}">
+{{ end }}
+{{ define "title" }}{{ .Meta.Title }}{{ end }}
+
+{{ define "css" }}
+<link rel="stylesheet" href="/static/css/custom/admin-map.css" />
+{{ end }}
+
+{{ define "main" }}
+
+{{ $fqdn := .Fqdn }}
+
+
+<header id="head" class="secondary"></header>
+
+
+<div class="container">
+
+  <ol class="breadcrumb">
+	<li><a href="/">Home</a></li>
+	<li class="active">{{ .Page.Title }}</li>
+  </ol>
+
+  <div class="row">
+	<!-- Article main content -->
+	<article class="col-md-12 maincontent">
+	  <header class="page-header">
+		<h1 class="page-title">{{ .Page.Title }}</h1>
+	  </header>
+
+      <div id="loader">
+	    <img src="/static/images/loading.gif"  alt="loading map"/>	  
+	  </div>
+      <div id="map" style="height:600px;"></div>    
+
+      {{ .Page.Content | unescaped }}
+      {{ if .Account.Email }} 
+      <p id="site-page-edit">
+	    <a href="/admin/editpage/{{ .Page.Slug }}">Edit Page</a>
+      </p>
+      {{ end }}
+	</article>
+	<!-- /Article -->
+	
+  </div>
+</div>	<!-- /container -->
+
+
+{{ end }}
+
+{{ define "js" }}
+<script src="/static/js/vendor/leaflet-0.7.3.js"></script>
+<script src="/static/js/build/custom/map.min.js"></script>
+{{ end }}

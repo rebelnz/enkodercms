@@ -1,0 +1,79 @@
+{{ define "css" }}
+<link rel="stylesheet" href="/static/css/custom/trumbowyg.css">
+<style>.trumbowyg-editor { width: 100%; }</style>
+{{ end }}
+
+{{ define "main" }}
+
+<div class="panel">
+  <div class="panel-header">
+    <h4>New Post</h4>
+  </div>
+  <div class="panel-body">
+    <form action="/admin/newpost" method="post" id="form-newpost" class="ink-form" enctype="multipart/form-data">
+      <fieldset>
+        {{ if .Message }}
+        {{ range .Message }}
+        <p><span class="ink-label red">{{ . }}</span></p>
+        {{ end }}
+        {{ end }}
+        <div class="control-group required column-group gutters">
+          <label for="title" class="all-20 align-right">Title</label>
+          <div class="control all-80">
+	        <input name="title" id="title" type="text" value="{{ .Title }}" placeholder="Title"/>
+          </div>
+        </div>
+        <div class="control-group column-group gutters">
+          <label for="email" class="all-20 align-right">Content</label>
+          <div class="control all-80">
+            <textarea name="content" id="content" type="textarea" >{{ .Content }}</textarea>
+          </div>
+        </div>
+        <div class="control-group column-group gutters">
+          <label for="file" class="all-20 align-right">File</label>
+          <div  class="control all-80">
+            <span>
+              <p>{{ .Filename }}</p>
+              Choose File
+            </span>
+            <div class="input-file">
+              <input name="file" id="file" type="file">
+            </div>
+          </div>
+        </div>
+        <div class="control-group column-group gutters">
+          <label for="tags" class="all-20 align-right">Tags</label>
+          <div class="control all-80">
+            <textarea name="tags" id="tags" type="textarea" placeholder="Tags -- comma seperated" class="newpage-metatags">{{ .Tags }}</textarea>
+          </div>
+        </div>
+        <div class="control-group column-group gutters">
+          <label for="status" class="all-20 align-right">Status</label>
+          <div class="control all-80">
+            <select name="status" id="status">
+              <option value="0" {{ with .Status }}{{ if eq 0 . }} selected="selected" {{ end }}{{ end }}>Draft</option>
+              <option value="1" {{ with .Status }}{{ if eq 1 . }} selected="selected" {{ end }}{{ end }}>Live</option>
+            </select>
+          </div>
+        </div>
+        <div class="push-right">
+          <input type="hidden" name="accid" value="{{ .Account.Id }}">
+          {{ if .Pid }}
+          <input type="hidden" name="pid" value="{{ .Pid }}">
+          <button type="submit" id="submit" class="ink-button">Edit Post</button>
+          {{ else }}
+          <button type="submit" id="submit" class="ink-button">Add Post</button>
+          {{ end }}
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
+
+{{ end }}
+
+{{ define "js" }}
+<script src="/static/js/vendor/trumbowyg.min.js"></script>
+{{ end }}
+
+

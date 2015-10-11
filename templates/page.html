@@ -1,0 +1,56 @@
+{{ define "title" }}{{ .Meta.Title }}{{ end }}
+{{ define "metatags" }}<meta name="description" content="{{ .Page.Metatags }}">{{ end }}
+{{ define "css" }}{{ end }}
+{{ define "main" }}
+{{ $fqdn := .Fqdn }}
+
+<header id="head" class="secondary"></header>
+
+<!-- container -->
+<div class="container">
+
+  <ol class="breadcrumb">
+	<li><a href="/">Home</a></li>
+	<li class="active">{{ .Page.Title }}</li>
+  </ol>
+
+  <div class="row">
+	<!-- Article main content -->
+	<article class="col-md-8 maincontent">
+	  <header class="page-header">
+		<h1 class="page-title">{{ .Page.Title }}</h1>
+	  </header>
+      {{ .Page.Content | unescaped }}
+      {{ if .Account.Email }} 
+      <p id="site-page-edit">
+	    <a href="/admin/editpage/{{ .Page.Slug }}">Edit Page</a>
+      </p>
+      {{ end }}
+	</article>
+	<!-- /Article -->
+	
+	<!-- Sidebar -->
+	<aside class="col-md-4 sidebar sidebar-right">
+      {{ if .Subwidgets }}
+      {{ range .Subwidgets }}
+	  <div class="row widget">
+		<div class="col-xs-12">
+          {{ .Content | unescaped }}    
+          {{ if .Filename }}
+          {{ if fileicon .Filename }}
+          <p><a href="http://{{ $fqdn }}/static/uploads/{{ .Filename }}"><i class="fa fa-file-{{ fileicon .Filename }}-o fa-2x"></i></a></p>
+          {{ else }}
+          <img src="/static/uploads/{{ .Filename }}" width="100%" >
+          {{ end }}
+          {{ end }}
+        </div>
+      </div>
+      {{ end }}
+      {{ end }}             
+	</aside>
+	<!-- /Sidebar -->
+  </div>
+</div>	<!-- /container -->
+{{ end }}
+
+{{ define "js" }}{{ end }}

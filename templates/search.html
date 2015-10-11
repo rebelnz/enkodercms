@@ -1,0 +1,34 @@
+{{ define "title" }}{{ .Meta.Title }}{{ end }}
+{{ define "metatags" }}{{ end }}
+{{ define "css" }}{{ end }}
+{{ define "main" }}
+{{ $fqdn := .Fqdn }}
+
+<header id="head" class="secondary"></header>
+<!-- container -->
+<div class="container">
+  <ol class="breadcrumb">
+	<li><a href="/">Home</a></li>
+	<li><a href="/news">News</a></li>
+	<li class="active">{{ .Post.Title }}</li>
+  </ol>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+	  <!-- Article main content -->
+	  <article class="maincontent">
+        <h2>Search Results</h2>
+        {{ if .Results }}
+        {{ range .Results }}
+        <h3><a href="{{ .Slug }}">{{ .Title }}</a></h3>
+        {{ end }}
+        {{ else }}
+        <p>Nothing Found</p>
+        {{ end }}
+      </article>
+	  <!-- /Article -->
+    </div>
+  </div>
+</div>	<!-- /container -->
+
+{{ end }}
+{{ define "js" }}{{ end }}

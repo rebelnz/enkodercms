@@ -1,0 +1,32 @@
+{{ define "title" }}{{ .Meta.Title }}{{ end }}
+{{ define "metatags" }}{{ end }}
+{{ define "css" }}{{ end }}
+{{ define "main" }}
+{{ $fqdn := .Fqdn }}
+
+<header id="head" class="secondary"></header>
+<!-- container -->
+<div class="container">
+  <ol class="breadcrumb">
+	<li><a href="/">Home</a></li>
+	<li class="active">News</li>
+  </ol>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+	  <!-- Article main content -->
+	  <article class="maincontent">
+        {{ if .Posts }}
+        {{ range .Posts }}
+        <h3><a href="{{ .Slug }}">{{ .Title }}</a></h3>
+        <p>{{ .Content | postsummary }}</p>
+        <p><small class="text-muted">Posted: {{ .Created_At | formattime }}</small></p>
+        {{ end }}
+        {{ end }}
+      </article>
+	  <!-- /Article -->
+    </div>
+  </div>
+</div>	<!-- /container -->
+
+{{ end }}
+{{ define "js" }}{{ end }}

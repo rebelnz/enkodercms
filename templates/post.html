@@ -1,0 +1,42 @@
+{{ define "title" }}{{ .Meta.Title }}{{ end }}
+{{ define "metatags" }}{{ end }}
+{{ define "css" }}{{ end }}
+{{ define "main" }}
+{{ $fqdn := .Fqdn }}
+
+
+<header id="head" class="secondary"></header>
+<!-- container -->
+<div class="container">
+  <ol class="breadcrumb">
+	<li><a href="/">Home</a></li>
+	<li><a href="/news">News</a></li>
+	<li class="active">{{ .Post.Title }}</li>
+  </ol>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+	  <!-- Article main content -->
+	  <article class="maincontent">
+        <h2>{{ .Post.Title }}</h2>
+        {{ if .Post.Filename }}    
+        {{ if fileicon .Post.Filename }}
+        <p><a href="http://{{ $fqdn }}/static/uploads/{{ .Filename }}"><i class="fa fa-file-{{ fileicon .Filename }}-o fa-2x"></i></a></p>
+        {{ else }}
+        <img src="/static/uploads/{{ .Post.Filename }}" class="img-rounded pull-left" alt="News Image"/>
+        {{ end }}
+        {{ end }}
+        {{ .Post.Content | postcontent }}    
+        <p><small class="text-muted">Posted: {{ .Post.Created_At | formattime }}</small></p>
+        <p><a href="http://www.facebook.com/sharer/sharer.php?u=enkoder.com.au&title={{ .Post.Title }}">Share on Facebook</a></p>
+        <p id="site-page-edit">
+	      <a href="/admin/editpost/{{ .Post.Id }}">Edit Post</a>
+        </p>
+      </article>
+	  <!-- /Article -->
+    </div>
+  </div>
+</div>	<!-- /container -->
+
+{{ end }}
+
+{{ define "js" }}{{ end }}

@@ -1,0 +1,231 @@
+{{ define "metatags" }}
+<meta name="description" content="{{ .Settings.Description }}">
+<meta name="keywords" content="{{ .Settings.Keywords }}">
+{{ end }}
+{{ define "css" }}{{ end }}
+{{ define "main" }}
+{{ $fqdn := .Fqdn }}
+
+<!-- Header -->
+<header id="head">
+  <div class="container">
+	<div class="row">
+	  <h1 class="lead">FAST RESPONSIVE WEB APPLICATIONS</h1>
+	  <p class="tagline">ENKODER: Everything Digital</p>
+	  <p><a href="/about" class="btn btn-default btn-lg" role="button">MORE INFO</a> <a href="/contact" class="btn btn-success btn-lg" role="button">CONTACT US</a></p>
+	</div>
+  </div>
+</header>
+<!-- /Header -->
+
+<!-- Intro -->
+<div class="container text-center">
+  <br> <br>
+  <h2 class="thin">We design, develop and host custom web applications.</h2>
+  <p class="text-muted">
+	Enkoder leverages modern technologies, programming languages and cloud computing to<br> 
+	create intuitive and functional web applications.
+  </p>
+</div>
+<!-- /Intro-->
+
+<!-- Highlights - jumbotron -->
+<div class="jumbotron top-space">
+  <div class="container">
+	
+	<h3 class="text-center thin">Our Advantages</h3>
+	
+	<div class="row">
+	  <div class="col-md-3 col-sm-6 highlight">
+		<div class="h-caption"><h4><i class="fa fa-code fa-5"></i>Modern</h4></div>
+		<div class="h-body text-center">
+		  <p>
+            As a new company we are able to take advantage of modern advances in technology without being locked in to outdated systems.
+          </p>
+		</div>
+	  </div>
+	  <div class="col-md-3 col-sm-6 highlight">
+		<div class="h-caption"><h4><i class="fa fa-lock fa-5"></i>Secure</h4></div>
+		<div class="h-body text-center">
+		  <p>
+            All applications are secured by HTTPS by defualt. This is a communications protocol for secure communication over
+            computer networks.
+          </p>
+		</div>
+	  </div>
+	  <div class="col-md-3 col-sm-6 highlight">
+		<div class="h-caption"><h4><i class="fa fa-mobile fa-5"></i>Responsive</h4></div>
+		<div class="h-body text-center">
+		  <p>
+            Our designs are developed 'responsive first' to cater for the increasing mobile market as well as looking great
+            on tablets and desktop devices. 
+          </p>
+		</div>
+	  </div>
+	  <div class="col-md-3 col-sm-6 highlight">
+		<div class="h-caption"><h4><i class="fa fa-fighter-jet fa-5"></i>Fast</h4></div>
+		<div class="h-body text-center">
+		  <p>
+            Because we are serious about speed we use programming languages and databases which perform at the highest I/O speeds possible. 
+          </p>
+		</div>
+	  </div>
+	</div> <!-- /row  -->
+	
+  </div>
+</div>
+<!-- /Highlights -->
+
+<!-- container -->
+<div class="container">
+
+  <h2 class="text-center top-space">How We Can Help</h2>
+  <br>
+
+  <div class="row">
+	<div class="col-sm-6">
+	  <h3>Our Content Management System</h3>
+	  <p>
+        Our CMS provide the ability for clients to manage their own content and settings, including subscribers, analytics, social media
+        and location. Intuitive and simple to use, the CMS can also be customised to incorporate required functionality. <a href="/enkoder-cms">Read More</a>
+      </p>
+	</div>
+	<div class="col-sm-6">
+	  <h3>Services We Offer</h3>
+	  <p>
+        We help small businesses and individuals create a web presence to connect with their customers and userbase. We understand how to
+        leverage digital marketing and offer advice and information for everything digital.
+      </p>      
+	</div>
+  </div> <!-- /row -->
+
+  <!-- <div class="row"> -->
+  <!--   <div class="col-sm-6"> -->
+  <!--     <h3>Can I use it to build a site for my client?</h3> -->
+  <!--     <p> -->
+  <!--   	Yes, you can. You may use this template for any purpose, just don't forget about the <a href="http://creativecommons.org/licenses/by/3.0/">license</a>,  -->
+  <!--   	which says: "You must give appropriate credit", i.e. you must provide the name of the creator and a link to the original template in your work.  -->
+  <!--     </p> -->
+  <!--   </div> -->
+  <!--   <div class="col-sm-6"> -->
+  <!--     <h3>Can you customize this template for me?</h3> -->
+  <!--     <p>Yes, I can. Please drop me a line to sergey-at-pozhilov.com and describe your needs in details. Please note, my services are not cheap.</p> -->
+  <!--   </div> -->
+  <!-- </div> <\!-- /row -\-> -->
+
+  <div class="jumbotron top-space">
+    <h2>What We Use</h2>
+	<h4>
+      As a new company Enkoder is not bound to outdated technologies and can embrace all the new and amazing developments in regards to
+      the internet. Having a passion for all things digital we are able to work with clients to built the best possible applications. 
+    </h4>
+
+    <div class="row">
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="thumbnail home-tech-stack">
+          <br/>
+          <img class="media-object" src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="/static/site/images/enkoder-golang.png" alt="Go Programming Language Logo">
+          <div class="caption">
+            <h3 class="text-center">Go Language</h3>
+            <p>
+              Go is a programming language initially developed at Google in 2007. It is a statically-typed
+              language and is known for its speed and stability.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="thumbnail home-tech-stack">
+          <br/>
+          <img class="media-object" src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="/static/site/images/enkoder-postgres.png" alt="Postgres Database Logo">
+          <div class="caption">
+            <h3 class="text-center">PostgreSQL</h3>
+            <p>
+              PostgreSQL is an object-relational database management system  with an emphasis standards-compliance.
+              As a database server, its primary function is to store data securely.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="thumbnail home-tech-stack">
+          <br/>
+          <img class="media-object" src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="/static/site/images/enkoder-html5.png" alt="HTML5 Logo">
+          <div class="caption">
+            <h3 class="text-center">HTML5</h3>
+            <p>
+              HTML5 is a core technology markup language of the Internet used for structuring and presenting content for the World Wide               
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="thumbnail home-tech-stack">
+          <br/>
+          <img class="media-object" src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="/static/site/images/enkoder-css3.png" alt="CSS3 Logo">
+          <div class="caption">
+            <h3 class="text-center">CSS3</h3>
+            <p>
+              CSS3 is the latest evolution of the Cascading Style Sheets language and aims at extending CSS2.1. 
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- <div class="media"> -->
+    <!--   <div class="pull-left"> -->
+    <!--     <a href="#"> -->
+    <!--       <img class="media-object" src="/static/site/images/enkoder-golang.png" alt="Go Programming Language Logo"> -->
+    <!--     </a> -->
+    <!--   </div> -->
+    <!--   <div class="media-body"> -->
+    <!--     <h4 class="media-heading">Media heading</h4> -->
+    <!--     Go Programming Language -->
+    <!--   </div> -->
+    <!-- </div> -->
+
+    
+    <p class="text-right"><a class="btn btn-success btn-large" href="/about">Learn more »</a></p>
+  </div>
+
+
+  <div class="jumbotron top-space">
+    <div class="text-center">
+      <h2>Newsletter</h2>
+      <p>Subscribe to our Newsletter and receive updates and advice.</p>
+      <div class="row">
+      <form method="post" action="/subscribe" id="form-subscribe" class="form-inline col-md-4 col-md-offset-4" data-process="subscribe">
+        <div class="input-group stylish-input-group">
+          <input type="email" name="email" class="form-control" placeholder="Subscribe" >
+          <span class="input-group-addon">
+            <button type="submit">
+              <span class="glyphicon glyphicon-plus-sign"></span>
+              <!-- <span><i class="fa fa-search fa-2" ></i></span> -->
+            </button>  
+            </span>
+        </div>
+      </form>
+      </div>
+    </div>
+    <br/>
+    <p id="subscribe-confirm" class="text-center">Thanks - you have been added to our mailing list.</p>      
+  </div>
+  
+  
+</div>	<!-- /container -->
+
+<script>
+function init() {
+var imgDefer = document.getElementsByTagName('img');
+for (var i=0; i<imgDefer.length; i++) {
+if(imgDefer[i].getAttribute('data-src')) {
+imgDefer[i].setAttribute('src',imgDefer[i].getAttribute('data-src'));
+} } }
+window.onload = init;
+</script>
+
+
+{{ end }}
+
+{{ define "js" }}{{ end }}

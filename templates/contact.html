@@ -1,0 +1,102 @@
+{{ define "metatags" }}
+<meta name="description" content="{{ .Settings.Keywords }}">
+{{ end }}
+{{ define "title" }}{{ .Meta.Title }}{{ end }}
+{{ define "css" }}{{ end }}
+
+{{ define "main" }}
+
+{{ $fqdn := .Fqdn }}
+
+<header id="head" class="secondary"></header>
+
+<!-- container -->
+<div class="container">
+
+  <ol class="breadcrumb">
+	<li><a href="/">Home</a></li>
+	<li class="active">Contact</li>
+  </ol>
+
+  <div class="row">
+	
+	<!-- Article main content -->
+	<article class="col-sm-9 maincontent">
+	  <header class="page-header">
+		<h1 class="page-title">Contact us</h1>
+	  </header>
+	  <p>
+		We’d love to hear from you. Interested in working together? Fill out the form below with some info about your project and we will get back to you.
+	  </p>
+	  <br>
+
+      <form action="/contact" method="post" id="form-contact" data-process="contact">
+		<div class="row">
+		  <div class="col-sm-4">
+			<input class="form-control" type="text" placeholder="Email" required>
+		  </div>
+		</div>
+		<br>
+		<div class="row">
+		  <div class="col-sm-12">
+			<textarea name="message" id="message" placeholder="Type your message here..." class="form-control" rows="9"></textarea>
+		  </div>
+		</div>
+		<br>
+		<div class="row">
+		  <div class="col-sm-12">
+          </div>          
+		    <div class="col-sm-6">
+            {{ if .Message }}	
+            {{ range .Message }}
+            <p class="alert alert-error">{{ . }}</p>
+            {{ end }}
+            {{ end }}    
+            <p id="contact-confirm">
+              Thanks for your enquiry - we will contact you soon.
+            </p>
+		    <!-- 	<label class="checkbox"><input type="checkbox"> Sign up for newsletter</label> -->
+		    </div>
+		    <div class="col-sm-6 text-right">
+		  	  <input class="btn btn-action" type="submit" value="Send message">
+		    </div>
+		</div>
+	  </form>
+
+	</article>
+	<!-- /Article -->
+	
+	<!-- Sidebar -->
+	<aside class="col-sm-3 sidebar sidebar-right">
+
+	  <div class="widget">
+		<h4><i class="fa fa-map-marker fa-2"></i> Address</h4>
+		<address>
+          {{ with .Settings.Address }}{{ . }} {{ end }}
+          {{ with .Settings.Street }}{{ . }} {{ end }}
+          {{ with .Settings.Suburb }}{{ . }} {{ end }}
+          {{ with .Settings.City }}{{ . }} {{ end }}
+          {{ with .Settings.Code }}{{ . }} {{ end }}
+		</address>
+        <h4><i class="fa fa-envelope-o fa-2"></i> Email</h4>
+		<address>
+          {{ with .Settings.Email }}{{ . }}{{ end }}
+		</address>
+		<h4><i class="fa fa-phone fa-2"></i> Phone</h4>
+		<address>
+          {{ with .Settings.Contact }}{{ . }}<br/>{{ end }}
+		</address>
+	  </div>
+
+	</aside>
+	<!-- /Sidebar -->    
+  </div>
+</div>	<!-- /container -->
+
+<!-- <section class="container-full top-space"> -->
+<!--   <div id="map"></div> -->
+<!-- </section> -->
+
+{{ end }}
+
+{{ define "js" }}{{ end }}

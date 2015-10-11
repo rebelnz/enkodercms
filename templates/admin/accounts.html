@@ -1,0 +1,50 @@
+{{ define "css" }}
+<link rel="stylesheet" href="/static/css/custom/admin-accounts.css">
+{{ end }}
+
+{{ define "main" }}
+
+<div class="column-group">
+  <div class="all-50">
+    <h3>Accounts</h3>
+  </div>  
+  <div class="all-50">
+    <a href="/admin/newaccount" class="ink-button blue push-right">New Account</a>
+  </div>
+</div>
+
+<div class="column-group gutters">  
+  {{ $priv := .Account.Priv }}
+  {{ range .Accounts }}
+  {{ if ge $priv .Priv  }}
+  <div class="xlarge-25 large-33 medium-33 small-50 tiny-100">
+    <div class="panel">
+      <div class="panel-header">
+        <h4>{{ .Firstname }}</h4>
+      </div>
+      <div class="panel-body admin-accounts-preview">
+        {{ if .Avatar }}<p><img src="/static/uploads/thumb_{{ .Avatar }}" class="avatar-thumbnail"/></p>{{ end }}
+        <p>{{ .Firstname }} {{ .Lastname }}</p>
+        <p>{{ .Email }}</p>
+      </div>
+      <div class="panel-preview-controls">
+        <ul>
+          <li><a href="/admin/editaccount/{{ .Id }}">edit </a></li>
+          <!-- <li><a href="/admin/viewaccount/{{ .Id }}">view </a></li> -->
+          {{ if eq 3 .Priv }}
+          {{ else }}
+          <li><a href="/admin/deleteitem/account/{{ .Id }}" class="delete-item">delete</a></li>
+          {{ end }}
+        </ul>
+      </div>
+    </div>
+    {{ end }}
+  </div>    
+  {{ end }}
+</div>
+
+{{ end }}
+
+{{ define "js" }}{{ end }}
+
+

@@ -1,0 +1,79 @@
+{{ define "metatags" }}{{ end }}
+{{ define "title" }}{{ .Meta.Title }}{{ end }}
+{{ define "css" }}
+{{ end }}
+
+{{ define "main" }}
+
+<header id="head" class="secondary"></header>
+
+<div class="container">
+
+  <ol class="breadcrumb">
+	<li><a href="index.html">Home</a></li>
+	<li class="active">Login</li>
+  </ol>
+  
+  <div class="row">
+	
+	<!-- Article main content -->
+	<article class="col-xs-12 maincontent">
+	  
+	  <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+		<div class="panel panel-default">
+		  <div class="panel-body">
+			<h3 class="thin text-center">Sign in to your account</h3>
+			<!-- <p class="text-center text-muted">Lorem ipsum dolor sit amet, <a href="signup.html">Register</a> adipisicing elit. Quo nulla quibusdam cum doloremque incidunt nemo sunt a tenetur omnis odio. </p> -->
+			<hr>
+
+            <form action="/login" method="post" id="form-login">
+			  <div class="top-margin">
+				<label>Email <span class="text-danger">*</span></label>
+				<input name="email" id="email" type="text" placeholder="Email" value="{{ .Email }}" class="form-control">
+			  </div>
+			  <div class="top-margin">
+				<label>Password <span class="text-danger">*</span></label>
+				<input name="password" id="password" type="password" placeholder="Password" class="form-control">
+			  </div>
+			  <hr>
+			  <div class="row">
+				<div class="col-lg-8">
+                  {{ if .Message }}	
+                  {{ range .Message }}
+                  <p class="alert alert-error">{{ . }}</p>
+                  {{ end }}
+                  {{ end }}
+                  <p id="reset-show">Forgot password?</p>
+				</div>
+				<div class="col-lg-4 text-right">
+				  <button class="btn btn-action" type="submit">Sign in</button>
+				</div>
+			  </div>
+		    </form>
+
+            <form action="/reset" method="post" id="form-reset" data-process="reset" >
+			  <div class="top-margin">
+				<label>Email <span class="text-danger">*</span></label>
+			    <input name="email" id="email" type="text" placeholder="Email" required class="form-control">
+			  </div>
+			  <div class="row">
+				<div class="col-lg-8">
+                  <p id="reset-confirm">Temporary password sent</p>
+				</div>
+				<div class="col-lg-4 text-right">
+				  <button class="btn btn-action" type="submit">Reset</button>
+				</div>
+			  </div>
+		    </form>
+
+		  </div>
+		</div>
+	  </div>
+	</article>
+	<!-- /Article -->
+  </div>
+</div>	<!-- /container -->
+
+{{ end }}
+
+{{ define "js" }}{{ end }}

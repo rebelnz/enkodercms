@@ -1,0 +1,87 @@
+{{ define "css" }}
+<link rel="stylesheet" href="/static/css/custom/trumbowyg.css">
+<style>.trumbowyg-editor { width: 100%; }</style>
+
+{{ end }}
+
+{{ define "main" }}
+
+<div class="panel">
+  <div class="panel-header">
+    <h4>New Page</h4>
+  </div>
+  <div class="panel-body">
+    <form action="/admin/newpage" method="post" id="form-newpage" class="ink-form">
+      <fieldset>
+        {{ if .Message }}
+        {{ range .Message }}
+        <p><span class="ink-label red">{{ . }}</span></p>
+        {{ end }}
+        {{ end }}
+        <div class="control-group required column-group gutters">
+          <label for="title" class="all-20 align-right">Title</label>
+          <div class="control all-80">
+	        <input name="title" id="title" type="text" value="{{ .Title }}" placeholder="Title"/>
+          </div>
+        </div>
+        <div class="control-group column-group gutters">
+          <label for="email" class="all-20 align-right">Content</label>
+          <div class="control all-80">
+            <textarea name="content" id="content" type="textarea" >{{ .Content }}</textarea>
+          </div>
+        </div>
+        <div class="control-group required column-group gutters">
+          <label for="metatags" class="all-20 align-right">Description</label>
+          <div class="control all-80">
+            <textarea name="metatags" id="metatags" type="textarea" placeholder="Description" class="newpage-metatags"></textarea>
+          </div>
+        </div>
+        <div class="control-group column-group gutters">
+          <label for="status" class="all-20 align-right">Status</label>
+          <div class="control all-80">
+            <select name="status" id="status">
+              <option value="0">Draft</option>
+              <option value="1">Live</option>
+            </select>
+          </div>
+        </div>
+        {{ if .ParentPages }}
+        <div class="control-group column-group gutters">
+          <label for="parent" class="all-20 align-right">Parent</label>
+          <div class="control all-80">
+            <select name="parent" id="parent">
+              <option value="0">Parent -- None</option>
+              {{ range .ParentPages }}
+              <option value="{{ .Id }}">{{ .Title }}</option>
+              {{ end }}
+            </select>
+          </div>
+        </div>
+        {{ end }}
+        {{ if .Widgets }}
+        <div class="control-group column-group gutters">
+          <label for="widget" class="all-20 align-right">Widget</label>
+          <div class="control all-80">
+            <ul class="form-inline-checkboxes inline">
+              {{ range .Widgets }}
+              <li><input class="checkbox" type="checkbox" name="widgets" value="{{ .Id }}" id="{{ .Title }}"/><label for="{{ .Title }}">{{ .Title }}</label></li>
+              {{ end }}
+            </ul>
+          </div>
+        </div>
+        {{ end }}
+        <div class="push-right">
+          <button type="submit" id="submit" class="ink-button">Add Page</button>
+        </div>
+      </fieldset>
+    </form>
+
+  </div>
+</div>
+
+{{ end }}
+
+{{ define "js" }}
+{{ end }}
+
+

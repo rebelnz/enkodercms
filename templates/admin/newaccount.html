@@ -1,0 +1,89 @@
+{{ define "css" }}
+{{ end }}
+
+{{ define "main" }}
+
+<div class="panel">
+  <div class="panel-header">
+    {{ if .Aid }}
+    <h4>Edit Account</h4>
+    {{ else }}
+    <h4>New Account</h4>
+    {{ end }}
+  </div>
+  
+  <div class="panel-body">
+
+    <form action="/admin/newaccount" method="post" id="form-newaccount" class="ink-form" enctype="multipart/form-data">
+      <fieldset>
+        {{ if .Message }}
+        {{ range .Message }}
+        <p><span class="ink-label red">{{ . }}</span></p>
+        {{ end }}
+        {{ end }}
+        <div class="control-group column-group gutters">
+          <label for="first-name" class="all-20 align-right">Name</label>
+          <div class="control all-40">
+            <input name="firstname" id="firstname" type="text" value="{{ .Firstname }}" placeholder="First Name">
+            <p class="tip">First Name</p>
+          </div>
+          <div class="control all-40">
+            <input name="lastname" id="lastname" type="text" value="{{ .Lastname }}" placeholder="Last Name">
+            <p class="tip">Last Name</p>
+          </div>
+        </div>
+
+        <div class="control-group required column-group gutters">
+          <label for="email" class="all-20 align-right">Email</label>
+          <div class="control all-80">
+            <input name="email" id="email" type="email" value="{{ .Email }}" placeholder="Email" class="ink-fv-required ink-fv-email">
+          </div>
+        </div>
+
+        <div class="control-group required column-group gutters">
+          <label for="password" class="all-20 align-right">Password</label>
+          <div class="control all-40">
+            <input name="password" id="password" type="password" placeholder="Password" class="ink-fv-required">
+          </div>
+          <div class="control all-40">
+            <input name="confirm" id="confirm" type="password" placeholder="Confirm Password" class="ink-fv-required">
+          </div>
+        </div>
+
+        <div class="control-group column-group gutters">
+          <label for="file" class="all-20 align-right">File</label>
+          <div  class="control all-80">
+            <div class="input-file">
+              <input name="file" id="file" type="file">
+            </div>
+          </div>
+        </div>
+
+        <div class="push-right">
+          {{ if .Aid }}
+          <input type="hidden" name="aid" value="{{ .Aid }}">
+          <button type="submit" id="submit" class="ink-button">Edit Account</button>
+          {{ else }}
+          <button type="submit" id="submit" class="ink-button">Add Account</button>
+          {{ end  }}
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
+
+{{ end }}
+
+{{ define "js" }}
+<script>
+Ink.requireModules(['Ink.UI.FormValidator_1', 'Ink.Dom.Event_1'], function (FormValidator, InkEvent) {
+    var accountForm = Ink.i('form-newaccount');
+    InkEvent.on(accountForm, 'submit', function (e) {
+        var isValid = FormValidator.validate(accountForm);
+        if (isValid === false) {
+            e.preventDefault();
+        }
+    });
+});
+</script>
+{{ end }}

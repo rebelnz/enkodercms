@@ -1,0 +1,49 @@
+{{ define "css" }}
+<link rel="stylesheet" href="/static/css/custom/admin-widgets.css">
+{{ end }}
+
+{{ define "main" }}
+
+<div class="column-group">
+  <div class="all-50">
+    <h3>Sliders</h3>
+  </div>  
+  <div class="all-50">
+    <a href="/admin/newslider" class="ink-button blue push-right">New Slider</a>
+  </div>
+</div>
+
+<div class="column-group gutters">
+  {{ if .Sliders }}
+  {{ range .Sliders }}
+  <div class="xlarge-25 large-33 medium-33 small-50 tiny-100 admin-pages">
+    <div class="panel">
+      <div class="panel-header">
+        <h4>{{ .Title }}</h4>
+      </div>
+      <div class="panel-body admin-widgets-preview">    
+        {{ if .Filename }}
+        <p><img src="/static/uploads/thumb_{{ .Filename }}"/></p>
+        {{ end }} 
+        <p><a href="{{ .Url }}">{{ .Url }}</a></p>
+        <p>{{ .Content }}</p>
+      </div>
+      <div class="admin-widgets-preview-controls">
+        <ul>
+          <li><a href="/admin/editslider/{{ .Id }}">edit </a></li>
+          <li><a href="/admin/deleteitem/slider/{{ .Id }}" class="delete-item">delete</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  {{ end }}
+  {{ else }}
+  <div class="all-100">
+    <p>No Sliders <a href="/admin/newslider">Add one now</a></p>  
+  </div>
+  {{ end }}
+</div>
+{{ end }}
+
+{{ define "js" }}{{ end }}
+

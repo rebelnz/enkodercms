@@ -1,0 +1,61 @@
+{{ define "css" }}
+<link rel="stylesheet" href="/static/css/custom/admin-navigation.css" />
+{{ end }}
+
+{{ define "main" }}
+<div class="column-group gutters">
+  <div class="xlarge-25 large-33 medium-33 small-50 tiny-100">
+    <div class="panel">
+      <div class="panel-header">
+        <h4>
+          Top Navigation
+        </h4>
+      </div>
+      <div class="panel-body">      
+        <ul id="topnav" class="sortable">
+          {{ range .TopNavPages }}
+          <li id="{{ .Id }}">{{ .Title }}</li>
+          {{ end }}
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="xlarge-25 large-33 medium-33 small-50 tiny-100">
+    <div class="panel">
+      <div class="panel-header">
+        <h4>
+          Footer Navigation
+        </h4>
+      </div>
+      <div class="panel-body">      
+        <ul id="footernav" class="sortable">
+          {{ range .FooterNavPages }}
+          <li id="{{ .Id }}">{{ .Title }}</li>
+          {{ end }}
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="xlarge-25 large-33 medium-33 small-50 tiny-100">
+    <div class="panel">
+      <div class="panel-header">
+        <h4>
+          Hide from Navigation
+        </h4>
+      </div>
+      <div class="panel-body">      
+        <ul id="sidenav" class="sortable">
+          {{ range .SideNavPages }}
+          <li id="{{ .Id }}">{{ .Title }}</li>
+          {{ end }}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{{ end }}
+
+{{ define "js" }}
+{{ end }}

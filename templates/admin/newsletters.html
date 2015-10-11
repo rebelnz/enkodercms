@@ -1,0 +1,75 @@
+{{ define "css" }}
+<link rel="stylesheet" href="/static/css/custom/admin-pages.css">
+{{ end }}
+
+{{ define "main" }}
+{{ $sp := .SpecPages }}
+  <div class="column-group">
+    <div class="all-50">
+      <h3>Pages</h3>
+    </div>  
+    <div class="all-50">
+      <a href="/admin/newpage" class="ink-button blue push-right">New Page</a>
+    </div>
+  </div>
+  
+  <div class="column-group gutters">
+    {{ if .TopPages }}
+    {{ range .TopPages }}
+    <div class="xlarge-25 large-33 medium-33 small-50 tiny-100">
+      <div class="panel">
+        <div class="panel-header">
+          <h4>
+            {{ .Title }}
+          </h4>
+          <span class="admin-pages-status status-{{ if eq .Status 1 }}live{{ else }}draft{{ end }}">{{ if eq .Status 1 }}<a href="/admin/ajax/updatepagestatus/0/{{ .Id }}" class="update-status">Live</a>{{ else }}<a href="/admin/ajax/updatepagestatus/1/{{ .Id }}" class="update-status">Draft</a>{{ end }}</span>
+        </div>
+        <div class="panel-body">
+          <div class="admin-pages-preview">
+            {{ .Content | unescaped  }}
+            </div>
+          <div class="panel-preview-controls">
+            <ul>
+              <li><a href="/admin/editpage/{{ .Slug }}">edit</a></li>
+              <li><a href="/{{ .Slug }}" target="_blank">view</a></li>
+              {{ if checkit .Slug $sp }}
+              {{ else }}
+              <li><a href="/admin/deleteitem/page/{{ .Id }}" class="delete-item">delete</a></li>
+              {{ end }}
+            </ul>
+          </div>
+          {{ if .Subpages }}
+          <div class="admin-pages-preview-subpages">
+            <h5>Subpages</h5>
+            <ul>
+              {{ range .Subpages }}
+              <li>
+                <span class=" status-{{ if eq .Status 1 }}live{{ else }}draft{{ end }}">
+                  {{ if eq .Status 1 }}
+                  <a href="/admin/editpage/{{ .Slug }}">{{ .Title }}</a>
+                  {{ else }}
+                  <a href="/admin/editpage/{{ .Slug }}" class="status-draft" style="color:#fff;">{{ .Title }}</a>
+                  {{ end}}
+                </span>
+              </li>
+              {{ end }}
+            </ul>
+          </div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+    {{ end }}
+  </div>
+  {{ else }}
+  <div class="all-100">
+    <p>No Pages <a href="/admin/newpage">Add one now</a></p>  
+  </div>
+  {{ end }}
+  
+  {{ end }}
+
+
+  {{ define "js" }}
+  {{ end }}
+

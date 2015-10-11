@@ -1,0 +1,79 @@
+{{ define "css" }}
+<link rel="stylesheet" href="/static/css/custom/trumbowyg.css">
+{{ end }}
+
+{{ define "main" }}
+<div class="panel">
+  <div class="panel-header">
+    {{ if .Wid }}
+    <h4>Edit Widget</h4>
+    {{ else }}
+    <h4>New Widget</h4>
+    {{ end }}    
+  </div>
+  <div class="panel-body">
+    <form class="ink-form" action="/admin/newwidget" method="post" id="form-newwidget" enctype="multipart/form-data">
+      <fieldset>
+        {{ if .Message }}
+        {{ range .Message }}
+        <p><span class="ink-label red">{{ . }}</span></p>
+        {{ end }}
+        {{ end }}
+        <div class="control-group required column-group gutters">
+          <label for="title" class="all-20 align-right">Title</label>
+          <div class="control all-80">
+	        <input name="title" id="title" type="text" value="{{ .Title }}" placeholder="Title"/>
+          </div>
+        </div>
+        <div class="control-group column-group gutters">
+          <label for="content" class="all-20 align-right">Content</label>
+          <div class="control all-80">
+            <textarea name="content" id="content" type="textarea" >{{ .Content }}</textarea>
+          </div>
+        </div>
+        <div class="control-group column-group gutters">
+          <label for="file" class="all-20 align-right">File</label>
+          <div  class="control all-80">
+            <span>
+              <p>{{ .Filename }}</p>
+              Choose File
+            </span>
+            <div class="input-file">
+              <input name="file" id="file" type="file">
+            </div>
+          </div>
+        </div>
+        <div class="control-group column-group gutters">
+          <label for="url" class="all-20 align-right">URL</label>
+          <div class="control all-80">
+	        <input name="url" id="url" type="text" value="{{ .Url }}" placeholder="url"/>
+          </div>
+        </div>
+        <div class="control-group column-group gutters">
+          <label for="status" class="all-20 align-right">Widget Size</label>
+          <div class="control all-80">
+            <select name="widgetsize" id="widgetsize">
+              <option value="small" {{ if eq "small" .Widgetsize  }} selected="selected" {{ end }}>Small</option>
+              <option value="medium" {{ if eq "medium" .Widgetsize  }} selected="selected" {{ end }}>Medium</option>
+              <option value="large" {{ if eq "large" .Widgetsize  }} selected="selected" {{ end }}>Large</option>
+            </select>
+          </div>
+        </div>
+        <div class="push-right">
+          {{ if .Wid }}
+          <input type="hidden" name="wid" value="{{ .Wid }}">
+          <button type="submit" id="submit" class="ink-button">Edit Widget</button>
+          {{ else }}
+          <button type="submit" id="submit" class="ink-button">Add Widget</button>
+          {{ end  }}
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
+
+{{ end }}
+
+{{ define "js" }}
+<script src="/static/js/vendor/trumbowyg.min.js"></script>
+{{ end }}

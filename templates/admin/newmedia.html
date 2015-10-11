@@ -1,0 +1,41 @@
+{{ define "css" }}
+{{ end }}
+
+{{ define "main" }}
+<div class="panel">
+  <div class="panel-header">
+    <h4>New Media</h4>
+  </div>
+  <div class="panel-body">
+    <form class="ink-form" action="/admin/newmedia" method="post" id="form-newmedia" enctype="multipart/form-data">
+      <fieldset>
+        {{ if .Message }}
+        {{ range .Message }}
+        <p><span class="ink-label red">{{ . }}</span></p>
+        {{ end }}
+        {{ end }}
+        <div class="control-group required column-group gutters">
+          <label for="title" class="all-20 align-right">Title</label>
+          <div class="control all-80">
+	        <input name="title" id="title" type="text" value="{{ .Title }}" placeholder="Title"/>
+          </div>
+        </div>
+        <div class="control-group column-group gutters">
+          <label for="file" class="all-20 align-right">File</label>
+          <div  class="control all-80">
+            <div class="input-file">
+              <input name="file" id="file" type="file">
+            </div>
+          </div>
+        </div>
+        <div class="push-right">
+          <button type="submit" id="submit" class="ink-button">Add Media</button>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
+
+{{ end }}
+
+{{ define "js" }}{{ end }}

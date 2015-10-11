@@ -1,0 +1,160 @@
+{{ define "css" }}
+<link rel="stylesheet" href="/static/css/custom/admin-settings.css">
+{{ end }}
+
+{{ define "main" }}
+
+<div id="admin-tabs" class="ink-tabs top">
+  <ul class="tabs-nav">
+    <li><a class="tabs-tab" href="#manual">Manual</a></li>
+    <li><a class="tabs-tab" href="#subscribers">Subscribers</a></li>
+    <li><a class="tabs-tab" href="#analytics">Analytics</a></li>
+  </ul>
+  <div class="tabs-body">
+    <div id="manual" class="tabs-content">
+      <div class="tabs-content-inner">
+        <h1>MANUAL</h1>
+        <h3>Pages</h3>
+        <p>
+          Add as many pages as you need - when adding a page there is an option to select a "parent" page.
+          In this case the page will be listed as a subpage and appear in the drop-down navigation.
+        </p>
+        <p>
+          Pages in "draft" mode will not appear on the front of the website. The map and contact page
+          by default have a map and contact form by default. However you can also add other content
+          to these pages if required.
+        </p>
+        <p>
+          Add page by page meta-tags to increase SEO.
+        </p>
+        
+        <h3>Widgets</h3>
+        <p>
+          Widgets can contain a snippet of info, image and a link - after adding a widget it will
+          appear as a checkbox item when creating or updating a page. Add as many as required.
+        </p>
+        
+        <h3>Map</h3>        
+        <p>
+          Drag and drop the marker to automatically update the map co-ordinates.
+        </p>
+        
+        <h3>Accounts</h3>
+        <p>
+          Add an account and specify a password to allow others to log in and make changes to the site. 
+        </p>
+        
+        <h3>Navigation</h3>
+        <p>
+          Drag and drop to update Navigation items position order. This is automatically updated.
+        </p>
+
+        <h3>Media</h3>
+        <p>
+          Upload new media and copy-paste the generated link into a page to display. Most of the time widgets will
+          be a better choice.
+        </p>
+
+        <h3>Settings</h3>
+        <p>
+          Settings contain address information and some meta-data
+        </p>
+        <p>
+          Pages in "draft" mode will not appear on the front of the website. The map and contact page
+          by default have a map and contact form by default. However you can also add other content
+          to these pages if required.
+        </p>
+      </div>
+    </div>
+    <div id="subscribers" class="tabs-content">
+      <div class="tabs-content-inner">
+        <h1>SUBSCRIBERS</h1>
+        <table class="ink-table bordered">
+          <thead>
+            <tr>
+              <th class="align-left">ID</th>
+              <th class="align-left">Email</th>
+              <th class="align-left">Subscribed</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{ range .Subscribers }}
+            <tr>
+              <td>{{ .Id }}</td>
+              <td>{{ .Email }}</td>
+              <td>{{ .Created_At | formattime }}</td>
+            </tr>
+            {{ end }}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div id="analytics" class="tabs-content">
+      <div class="tabs-content-inner">
+        {{ if .Settings.Ganalytics }}
+        <div id="embed-api-auth-container"></div>
+        <div id="chart-container"></div>
+        <div id="view-selector-container"></div>
+        <script>
+          (function(w,d,s,g,js,fs){
+          g=w.gapi||(w.gapi={});g.analytics={q:[],ready:function(f){this.q.push(f);}};
+          js=d.createElement(s);fs=d.getElementsByTagName(s)[0];
+          js.src='https://apis.google.com/js/platform.js';
+          fs.parentNode.insertBefore(js,fs);js.onload=function(){g.load('analytics');};
+          }(window,document,'script'));
+        </script>
+        
+        <script>
+          gapi.analytics.ready(function() {
+          gapi.analytics.auth.authorize({
+          container: 'embed-api-auth-container',
+          clientid: '{{ .Settings.Ganalytics }}',
+          });
+          
+          var viewSelector = new gapi.analytics.ViewSelector({
+          container: 'view-selector-container'
+          });
+          
+          viewSelector.execute();
+          
+          var dataChart = new gapi.analytics.googleCharts.DataChart({
+          query: {
+          metrics: 'ga:sessions',
+          dimensions: 'ga:date',
+          'start-date': '30daysAgo',
+          'end-date': 'yesterday'
+          },
+          chart: {
+          container: 'chart-container',
+          type: 'LINE',
+          options: {
+          width: '100%'
+          }
+          }
+          });
+          
+          
+          viewSelector.on('change', function(ids) {
+          dataChart.set({query: {ids: ids}}).execute();
+          });
+          
+          });
+        </script>            
+        {{ else }}   
+        <p>More info here</p>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  Ink.requireModules( ['Ink.Dom.Selector_1','Ink.UI.Tabs_1'], function( Selector, Tabs ){
+  var tabsObj = new Tabs('#admin-tabs',{onChange: function(){ window.scrollTo( 0, 0 );}});
+  });
+</script>
+
+
+{{ end }}
+
+{{ define "js" }}{{ end }}

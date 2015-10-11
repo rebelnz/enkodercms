@@ -1,0 +1,25 @@
+{{ define "css" }}
+<link rel="stylesheet" href="/static/css/custom/admin-map.css" />
+{{ end }}
+
+{{ define "main" }}
+
+<div class="panel">
+  <div class="panel-header">
+    <h4>Edit Map <span id="map-updated" class="ink-label green push-right">Map Updated</span></h4>
+  </div>  
+  <div class="panel-body map-holder">
+	<div id="loader">
+      <span><i class="fa fa-refresh fa-spin fa-3x"></i></span>
+	</div>
+    <div id="map"></div>
+  </div>
+</div>
+
+{{ end }}
+
+{{ define "js" }}
+<script src="/static/js/vendor/leaflet-0.7.3.js"></script>
+<script src="/static/js/build/custom/admin-map.min.js"></script>
+{{ end }}
+

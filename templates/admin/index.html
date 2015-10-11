@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" type="text/css" href="/static/css/ink-flex.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/css/admin/admin.css">    
+    <!--[if lt IE 9 ]>
+        <link rel="stylesheet" href="/static/css/ink-ie.min.css" type="text/css" media="screen" title="no title" charset="utf-8">
+    <![endif]-->
+    {{ template "css" . }}
+
+    <script type="text/javascript" src="/static/js/vendor/modernizr.js"></script>
+    <script type="text/javascript">
+      Modernizr.load({
+      test: Modernizr.flexbox,
+      nope : '/static/css/ink-legacy.min.css'
+      });
+    </script>
+    <script type="text/javascript" src="/static/js/vendor/ink-all.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Meta.Title }}</title>
+  </head>
+
+  <body class="ink-drawer">
+    <div class="wrap">
+      <div id="admin-profile-data">
+	    <h4>{{ .Account.Firstname }} {{ .Account.Lastname }}</h4>
+        <p>{{ .Account.Email }}</p>
+        <p><a href="/admin/editaccount/{{ .Account.Id }}" class="common-a"><i class="fa fa-cog fa-fw fa-spin"></i> Settings</a></p>
+        <p><a href="/logout" class="common-a"><i class="fa fa-sign-out fa-fw"></i> Logout</a></p>
+      </div>      
+
+      <div id="topbar">
+        <nav class="ink-navigation ink-grid ie7">
+          <ul class="menu horizontal black push-left medium-push-center small-push-center tiny-push-center">
+            <li class=""><button class="fa fa-bars left-drawer-trigger hide-xlarge hide-large"></button></li>
+            <li class="logoPlaceholder"><a href="/" class="logoPlaceholder">{{ .Sitename }}</a></li>
+          </ul>
+          <ul class="menu horizontal black push-right hide-medium hide-small hide-tiny">
+	        <li>
+              {{ if .Account.Avatar }}
+              <a href="#" id="nav-profile">
+                <img src="/static/uploads/thumb_{{ .Account.Avatar }}" class="avatar-thumbnail" alt="avatar"/>
+              </a>
+              {{ else }}
+              <a href="#" id="nav-profile"> {{ .Account.Firstname }}</a>
+            </li>
+            {{ end }}
+          </ul>
+        </nav>
+      </div>
+
+      <div class="left-drawer">
+        <nav class="ink-navigation">
+	      <ul class="menu vertical black">
+	        <li><a href="/admin" {{if eq .Meta.Nav "admin" }} class="active" {{end}}>Admin</a></li>
+	        <li><a href="/admin/settings" {{if eq .Meta.Nav "settings" }} class="active" {{end}}>Settings</a></li>
+	        <li><a href="/admin/accounts" {{if eq .Meta.Nav "accounts" }} class="active" {{end}}>Accounts</a></li>
+	        <li><a href="/admin/sliders" {{if eq .Meta.Nav "sliders" }} class="active" {{end}}>Sliders</a></li>
+	        <li><a href="/admin/pages" {{if eq .Meta.Nav "pages" }} class="active" {{end}}>Pages</a></li>
+	        <li><a href="/admin/widgets" {{if eq .Meta.Nav "widgets" }} class="active" {{end}}>Widgets</a></li>
+	        <li><a href="/admin/medias" {{if eq .Meta.Nav "media" }} class="active" {{end}}>Media</a></li>
+	        <li><a href="/admin/posts" {{if eq .Meta.Nav "posts" }} class="active" {{end}}>Posts</a></li>
+	        <li><a href="/admin/navigation" {{if eq .Meta.Nav "navigation" }} class="active" {{end}}>Navigation</a></li>
+	        <li><a href="/admin/map" {{if eq .Meta.Nav "map" }} class="active" {{end}}>Map</a></li>
+	        <!-- <li><a href="/admin/newsletters" {{if eq .Meta.Nav "newsletters" }} class="active" {{end}}>Newsletters</a></li> -->
+          </ul>
+        </nav>
+      </div>
+
+      <div class="ink-grid content-drawer page-content">
+        <div class="column-group gutters">
+          <div class="xlarge-20 large-20 hide-medium hide-small hide-tiny sidebar">
+            <nav class="ink-navigation">
+	          <ul class="menu vertical">
+	            <li><a href="/admin" {{if eq .Meta.Nav "admin" }} class="active" {{end}}>Admin</a></li>
+	            <li><a href="/admin/settings" {{if eq .Meta.Nav "settings" }} class="active" {{end}}>Settings</a></li>
+	            <li><a href="/admin/accounts" {{if eq .Meta.Nav "accounts" }} class="active" {{end}}>Accounts</a></li>
+	            <li><a href="/admin/sliders" {{if eq .Meta.Nav "sliders" }} class="active" {{end}}>Sliders</a></li>
+	            <li><a href="/admin/pages" {{if eq .Meta.Nav "pages" }} class="active" {{end}}>Pages</a></li>
+	            <li><a href="/admin/widgets" {{if eq .Meta.Nav "widgets" }} class="active" {{end}}>Widgets</a></li>
+	            <li><a href="/admin/medias" {{if eq .Meta.Nav "media" }} class="active" {{end}}>Media</a></li>
+	            <li><a href="/admin/posts" {{if eq .Meta.Nav "posts" }} class="active" {{end}}>Posts</a></li>
+	            <li><a href="/admin/navigation" {{if eq .Meta.Nav "navigation" }} class="active" {{end}}>Navigation</a></li>
+	            <li><a href="/admin/map" {{if eq .Meta.Nav "map" }} class="active" {{end}}>Map</a></li>
+	            <!-- <li><a href="/admin/newsletters" {{if eq .Meta.Nav "newsletters" }} class="active" {{end}}>Newsletters</a></li> -->
+              </ul>
+            </nav>
+          </div>
+
+          <div class="xlarge-70 large-70 medium-100 small-100 tiny-100">
+            <div class="main-content">
+              {{ template "main" . }}
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="push"></div>
+    </div>
+    
+    <footer class="content-drawer clearfix">
+      <div class="ink-grid half-top-space">
+        <ul class="unstyled inline fw-300 align-center">
+          <li><a href="http://enkoder.com.au">enkoder</a></li>
+        </ul>
+      </div>      
+    </footer>
+
+    <script>
+      Ink.requireModules(['Ink.UI.Drawer_1'], function(Drawer) {
+      var inkDrawer = new Drawer({ sides: 'left', mode: 'push' });
+      });
+    </script>
+    
+    <script src="/static/js/vendor/jquery-1.11.1.min.js"></script>
+    <script src="/static/js/vendor/jquery-ui.min.js"></script>
+    <script src="/static/js/vendor/knockout-3.2.0.js"></script>
+    <script src="/static/js/vendor/trumbowyg.min.js"></script>
+    <script src="/static/js/build/admin/{{ .Sitename }}.min.js"></script>
+    {{ template "js" . }}
+    
+  </body>
+</html>

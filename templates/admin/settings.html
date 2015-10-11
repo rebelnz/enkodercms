@@ -1,0 +1,86 @@
+{{ define "css" }}
+<link rel="stylesheet" href="/static/css/custom/admin-settings.css">
+{{ end }}
+
+{{ define "main" }}
+  <div id="settings-tabs" class="ink-tabs top">
+    <ul class="tabs-nav">
+      <li><a class="tabs-tab" href="#contact">Contact</a></li>
+      <li><a class="tabs-tab" href="#social">Social</a></li>
+      <li><a class="tabs-tab" href="#technical">Technical</a></li>
+    </ul>
+    <div class="tabs-body">
+      <span class="push-right" id="admin-settings-edit">Edit</span>
+      <div id="contact" class="tabs-content">
+        <div class="admin-settings-display tabs-content-inner">
+          <ul>
+            <li>Contact Email: <span data-bind="text:email"></span></li>
+            <li>Contact Number: <span data-bind="text:contact"></span></li>
+            <li>Address: <span data-bind="text:address"></span></li>
+            <li>Street: <span data-bind="text:street"></span></li>
+            <li>Suburb: <span data-bind="text:suburb"></span></li>
+            <li>City: <span data-bind="text:city"></span></li>
+            <li>Area Code: <span data-bind="text:code"></span></li>
+          </ul>
+        </div>
+        <div class="admin-settings-input">
+          <ul>
+            <li><input data-bind='value:email, valueUpdate:"afterkeydown"' placeholder="email"/></li>
+            <li><input data-bind='value:contact, valueUpdate:"afterkeydown"' placeholder="contact"/></li>
+            <li><input data-bind='value:address, valueUpdate:"afterkeydown"' placeholder="address"/></li>
+            <li><input data-bind='value:street, valueUpdate:"afterkeydown"' placeholder="street"/></li>
+            <li><input data-bind='value:suburb, valueUpdate:"afterkeydown"' placeholder="suburb"/></li>
+            <li><input data-bind='value:city, valueUpdate:"afterkeydown"' placeholder="city"/></li>
+            <li><input data-bind='value:code, valueUpdate:"afterkeydown"' placeholder="code"/></li>
+          </ul>
+        </div>        
+      </div>
+      <div id="social" class="tabs-content">
+        <div class="admin-settings-display tabs-content-inner">
+          <ul>
+            <li>Facebook: <span data-bind="text:facebook"></span></li>
+            <li>Twitter: <span data-bind="text:twitter"></span></li>
+            <li>LinkedIn: <span data-bind="text:linkedin"></span></li>
+          </ul>
+        </div>
+        <div class="admin-settings-input">
+          <ul>
+            <li><input data-bind='value:facebook, valueUpdate:"afterkeydown"' placeholder="facebook"/></li>
+            <li><input data-bind='value:twitter, valueUpdate:"afterkeydown"' placeholder="twitter"/></li>
+            <li><input data-bind='value:linkedin, valueUpdate:"afterkeydown"' placeholder="linkedin"/></li>
+          </ul>
+        </div>
+      </div>
+      <div id="technical" class="tabs-content">
+        <div class="admin-settings-display tabs-content-inner">
+          <ul>
+            <li>Description: <span data-bind="text:description"></span></li>
+            <li>Keywords: <span data-bind="text:keywords"></span></li>
+            <li>Google Analytics: <span data-bind="text:ganalytics"></span></li>
+            <li>SMTP: <span data-bind="text:smtp"></span></li>
+          </ul>
+        </div>
+        <div class="admin-settings-input">
+          <ul>
+            <li><input data-bind='value:description, valueUpdate:"afterkeydown"' placeholder="description"/></li>
+            <li><input data-bind='value:keywords, valueUpdate:"afterkeydown"' placeholder="keywords"/></li>
+            <li><input data-bind='value:ganalytics, valueUpdate:"afterkeydown"' placeholder="G analytics"/></li>
+            <li><input data-bind='value:smtp, valueUpdate:"afterkeydown"' placeholder="SMTP"/></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>  
+
+<script>
+  Ink.requireModules( ['Ink.Dom.Selector_1','Ink.UI.Tabs_1'], function( Selector, Tabs ){
+  var tabsObj = new Tabs('#settings-tabs',{onChange: function(){ window.scrollTo( 0, 0 );}});
+  });
+</script>
+
+{{ end }}
+
+{{ define "js" }}
+{{ end }}
+

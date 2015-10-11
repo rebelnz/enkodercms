@@ -1,0 +1,70 @@
+$font-stack: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-color: #444444;
+$main-blue: #11a5e0;
+$light-blue: #D6F3FF;
+
+.admin-pages-preview {
+  height: 60px;
+  overflow: hidden;
+  padding: 4px;
+  font-size: .4em;
+}
+
+.admin-pages-preview-subpages  {
+h4, h5 {
+  margin: 12px 4px 0 4px;
+  }
+ul {
+  padding: 4px;
+  margin: 4px 0 0 0;
+  li {
+    display: block;
+    font-size: .82em;
+    list-style-type: none;
+    text-align: center;
+    background: $light-blue;
+    margin-top: 4px;
+    &:hover {
+    background: $main-blue;
+    color: #ffffff;
+    }
+    a {
+      display: block;        
+      padding: 4px 6px;
+      color: $font-color;        
+    &:hover {
+      text-decoration: none;
+      color: #ffffff;
+      }
+    }
+  }
+}
+}
+
+.admin-pages-status {
+  font-size: .8em;
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  display: block-inline;
+  padding: 2px 6px;
+  color: #ffffff;
+  a {
+    color: #ffffff;
+    }
+  }
+    
+.status-live {
+  background: #2EB81F;
+  &:hover {
+    background: #238718;
+    }
+  }
+    
+.status-draft {
+  background: #FAAF23;
+  &:hover {
+    background: #d69620;
+    }
+}
+  

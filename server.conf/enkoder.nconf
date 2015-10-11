@@ -1,0 +1,48 @@
+upstream enkoder_app {
+    server 127.0.0.1:8001;
+    # keepalive 300;
+}
+
+server {
+       listen         104.237.159.213:80;
+       server_name enkoder.com.au www.enkoder.com.au;
+       return         301 https://$server_name$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    server_name enkoder.com.au www.enkoder.com.au;
+
+    root /var/www/enkoder;
+    access_log /var/log/nginx/enkoder.access.log;
+    error_log /var/log/nginx/enkoder.error.log;
+
+    ssl on;
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+    ssl_certificate     /etc/nginx/ssl/enkoder/server.crt;
+    ssl_certificate_key /etc/nginx/ssl/enkoder/server.key;
+    ssl_session_cache shared:SSL:10m;
+    ssl_session_timeout 10m;
+
+    keepalive_timeout 70;
+
+    location / {
+        proxy_pass http://enkoder_app;
+        proxy_http_version 1.1;
+        # proxy_set_header Connection "";
+    }
+
+    location /static/ {
+        try_files $uri $uri/ $uri.html =404;
+        access_log off;
+        expires 30d;
+        tcp_nodelay off;
+
+        # Set the OS file cache.
+        open_file_cache max=3000 inactive=120s;
+        open_file_cache_valid 45s;
+        open_file_cache_min_uses 2;
+        open_file_cache_errors off;
+    }
+
+}

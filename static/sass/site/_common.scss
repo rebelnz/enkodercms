@@ -1,0 +1,36 @@
+.clear {
+  clear: both;
+}
+    
+.error {
+  color: #FAAF23;
+  font-weight: bold;
+}
+
+.success {
+  color: #2EB81F;
+}
+
+span.pull-right {
+  float: right;
+}
+
+a.common-a {
+  color: #11A5E0;
+  padding: 4px 10px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;  
+  border-radius: 4px;
+  }
+    
+a.common-a:hover {
+  -o-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -webkit-transition: 0.5s;
+  background-color: #D6F3FF;
+  color: #444444; 
+}
+    
+  

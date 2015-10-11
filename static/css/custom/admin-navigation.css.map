@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,SAAU;EACR,UAAU,EAAE,IAAI;EAChB,MAAM,EAAE,KAAK;EACb,OAAO,EAAE,CAAC;EACV,YAAG;IACD,MAAM,EAAE,iBAAiB;IACzB,MAAM,EAAE,IAAI;IACZ,UAAU,EAAE,OAAO;IACnB,MAAM,EAAE,KAAK;IACb,OAAO,EAAE,GAAG;IACZ,eAAe,EAAE,IAAI",
+"sources": ["../../sass/custom/admin-navigation.scss"],
+"names": [],
+"file": "admin-navigation.css"
+}

@@ -1,0 +1,81 @@
+#topbar {
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  background: #1a1a1a;
+  -webkit-transform: scale3d(1, 1, 1);
+  *zoom: 1;
+  top: 0;
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  .ink-navigation {
+    *zoom: 1;
+    ul.black li {
+      font-size: 14px;
+      a {
+        padding: .7em 1em;
+        color: #bbb;
+        text-transform: uppercase;
+        font-weight: 300;
+        line-height: 24px;
+        *height: auto;
+        &:hover {
+          color: #fff;
+        }
+      }
+      ul li a:hover {
+        color: #000;
+      }
+      a {
+        &.ink-button {
+          color: #fff;
+          padding: 4px 12px;
+          margin: 5px 1em;
+          font-size: .875em;
+          -webkit-border-radius: 2px;
+          border-radius: 2px;
+          &:hover {
+            background: #0d68c2;
+          }
+        }
+        &.logoPlaceholder {
+          margin-right: .5em;
+          padding: .4em 0;
+          &:hover {
+            background: 0 0;
+          }
+        }
+      }
+      button.fa-bars {
+        background: 0 0;
+        color: #bbb;
+        border: 0;
+        padding: .8em .8em .8em 0;
+        float: left;
+        &:active, &:focus, &:hover {
+          color: #fff;
+          outline: 0;
+        }
+      }
+      &.active a {
+        color: #fff;
+      }
+    }
+    &:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+  }
+}
+
+.avatar-thumbnail {
+  width: 32px;
+  height: 32px;
+  border-radius: 16px;
+  -webkit-border-radius: 16px;
+  -moz-border-radius: 16px;
+}

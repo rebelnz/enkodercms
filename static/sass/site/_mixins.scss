@@ -1,0 +1,22 @@
+@mixin gradient($baseColor, $toColor) {
+  background-color: $baseColor;
+  background-image: -moz-linear-gradient(top, $baseColor, $toColor);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, $baseColor), color-stop(1, $toColor));
+  background-image: linear-gradient(top, $baseColor, $toColor);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='$baseColor', EndColorStr='$toColor');
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin box($radius, $borderThickness, $baseColor, $toColor) {
+  @include gradient($baseColor, $toColor);
+  padding: 6px 0;   
+  border: $borderThickness solid #ddd;
+  border-radius: $radius;
+}
+  

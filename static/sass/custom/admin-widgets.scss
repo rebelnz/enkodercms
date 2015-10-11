@@ -1,0 +1,47 @@
+$font-stack: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-color: #444444;
+$main-blue: #11a5e0;
+$light-blue: #D6F3FF;
+
+.admin-widgets-preview {
+  height: 140px;
+  overflow: auto;
+  padding: 4px;
+  font-size: .4em;
+  img {
+    background: #ffffff;
+    display: block;
+    margin: auto;
+    border: 1px solid #eeeeee;
+    padding: 6px;
+  }
+}
+
+.admin-widgets-preview-controls  {
+  h4, h5 {
+    margin: 12px 4px 0 4px;
+    }
+  ul {
+    padding: 4px;
+    margin: 12px 0 0 0;
+    li {
+      font-size: .82em;
+      display: inline-block;
+      text-align: center;
+      background: $light-blue;
+      &:hover {
+      background: $main-blue;
+      color: #ffffff;
+      }
+      a {
+        display: block;        
+        padding: 2px 12px;
+        color: $font-color;        
+      &:hover {
+        color: #ffffff;
+        }
+      }
+    }
+  }
+}
+  

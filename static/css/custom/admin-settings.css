@@ -1,0 +1,39 @@
+#admin-settings-edit {
+  display: block-inline;
+  width: 48px;
+  background: #2EB81F;
+  color: #ffffff;
+  cursor: pointer;
+  text-align: center; }
+
+.admin-settings-input ul li input {
+  font-weight: 300;
+  border-radius: 2px;
+  padding: 8px 6px;
+  border: 1px solid #C6C6C6;
+  resize: none;
+  background: none repeat scroll 0% 0% #FFF;
+  vertical-align: middle; }
+
+.admin-settings-display ul li {
+  padding: 16px 0 14px 0; }
+  .admin-settings-display ul li span {
+    float: right;
+    font-weight: bold; }
+
+#settings-updated {
+  float: right;
+  display: none; }
+
+.admin-settings-input {
+  display: none; }
+  .admin-settings-input input {
+    padding: 6px 12px;
+    margin: 4px 0; }
+
+.admin-settings-display ul li span {
+  display: box;
+  max-width: 176px;
+  overflow: auto; }
+
+/*# sourceMappingURL=admin-settings.css.map */

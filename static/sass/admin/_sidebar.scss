@@ -1,0 +1,25 @@
+.sidebar {
+  ul {
+    li {
+      a {
+        text-decoration: none;
+        border-left: 3px solid #f0f0f0;
+      }
+      &:hover
+        {
+        background: none repeat scroll 0 0 #fff;
+      }
+        a.active {
+        background: none repeat scroll 0 0 #fff;
+        color: #555;
+        cursor: pointer;
+        border-left: 3px solid #01b20d;
+        }
+    }
+  }
+}
+
+.ink-navigation ul.menu.vertical li a {
+  border-bottom: none;
+  margin: 0 0 4px 0;
+}

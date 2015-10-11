@@ -1,0 +1,13 @@
+.sortable {
+  min-height: 20px;
+  margin: 0 8px;
+  padding: 0; }
+  .sortable li {
+    border: 1px solid #eeeeee;
+    cursor: move;
+    background: #ffffff;
+    margin: 6px 0;
+    padding: 6px;
+    list-style-type: none; }
+
+/*# sourceMappingURL=admin-navigation.css.map */

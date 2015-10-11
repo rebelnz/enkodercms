@@ -1,0 +1,2 @@
+If we are using plain CSS/JS (not pre-processed) this folder is where the site
+design js, css, images and fonts go. Otherwise use the sass folder.

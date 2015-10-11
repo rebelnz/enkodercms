@@ -1,0 +1,33 @@
+@import "mixins";
+
+.alert {
+  font-size: .8em;
+  margin: 12px 4px;
+  padding: 12px;
+  @include border-radius(4px);
+}
+
+.alert-success {
+  border: 1px solid #74d14d;
+  color: #2a680f;
+  background: #dff0d8;
+}
+
+.alert-info {
+  border: 1px solid #0375de;
+  color: #015db2;
+  background: #d4f3fc;
+}
+
+.alert-warning {
+  border: 1px solid #f58104;
+  color: #f58104;
+  background: #fee9c3;
+}
+  
+.alert-error {
+  border: 1px solid #ebccd1;
+  color: #a94442;
+  background: #f2dede;
+}
+  

@@ -1,0 +1,4 @@
+/etc/nginx/sites-available/example
+/etc/supervisor/conf.d/example.conf
+
+# ssl conf is in ./ssl

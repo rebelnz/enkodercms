@@ -1,0 +1,7 @@
+{
+    "sitename": "enkoder",
+    "fqdn": "www.enkoder.com.au",
+    "host": "localhost",
+    "sessionname": "enkoder-session",
+    "appport": ":8001"
+}

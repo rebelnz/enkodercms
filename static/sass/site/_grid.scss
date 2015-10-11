@@ -1,0 +1,80 @@
+.row {
+  &:before, &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+[class*='col-'] {
+  float: left;
+  min-height: 1px;
+  width: 16.66%;
+  /*-- gutter -- */
+  padding: 6px 12px;
+}
+
+.col-1 {
+  width: 16.66%;
+}
+
+.col-2 {
+  width: 33.33%;
+}
+
+.col-3 {
+  width: 50%;
+}
+
+.col-4 {
+  width: 66.66%;
+}
+
+.col-5 {
+  width: 83.33%;
+}
+
+.col-6 {
+  width: 100%;
+}
+
+.outline {
+  outline: 1px solid #f6a1a1;
+  * {
+    outline: 1px solid #f6a1a1;
+  }
+}
+
+@media all and (max-width: 800px) {
+  .col-1 {
+    width: 50%;
+    float: none;
+  }
+  .col-2 {
+    width: 50%;
+    float: none;
+  }
+  .col-3 {
+    width: 83.33%;
+  }
+  .col-4, .col-5, .col-6 {
+    width: 100%;
+  }
+  .row {
+    .col-2:last-of-type, .col-5 ~ .col-1 {
+      width: 100%;
+    }
+  }
+}
+
+@media all and (max-width: 650px) {
+  .col-1 {
+    float: none;
+  }
+  .col-2, .col-3, .col-4, .col-5, .col-6 {
+    width: 100%;
+    h1 {
+      text-align: center;
+    }
+  }
+}

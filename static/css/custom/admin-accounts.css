@@ -1,0 +1,13 @@
+.admin-accounts-preview {
+  height: 104px;
+  overflow: hidden;
+  padding: 4px; }
+  .admin-accounts-preview p {
+    padding: 0;
+    margin: 0; }
+  .admin-accounts-preview img {
+    margin: 4px auto 16px auto;
+    width: 32px;
+    display: block; }
+
+/*# sourceMappingURL=admin-accounts.css.map */

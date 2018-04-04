@@ -28,9 +28,11 @@
         {{ .Post.Content | postcontent }}    
         <p><small class="text-muted">Posted: {{ .Post.Created_At | formattime }}</small></p>
         <p><a href="http://www.facebook.com/sharer/sharer.php?u=enkoder.com.au&title={{ .Post.Title }}">Share on Facebook</a></p>
+      {{ if .Account.Email }} 
         <p id="site-page-edit">
 	      <a href="/admin/editpost/{{ .Post.Id }}">Edit Post</a>
         </p>
+        {{ end }}
       </article>
 	  <!-- /Article -->
     </div>

@@ -65,7 +65,9 @@ func Index(format string) http.HandlerFunc {
 func Login(w http.ResponseWriter, r *http.Request) {
 	Data := dataMap(w, r)
 	Data["Meta"] = m.Meta{Title: "Login", Nav: "login"}
-	t, _ := template.ParseFiles("templates/index.html", "templates/login.html")
+
+	t := template.Must(template.New("index.html").Funcs(funcMap).ParseFiles("templates/index.html", "templates/login.html"))
+
 	if err := t.Execute(w, Data); err != nil {
 		fmt.Println(err)
 		return

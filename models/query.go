@@ -144,7 +144,7 @@ func GetNavPages(navtype string) (navPages []Page) {
 func (ps Posts) GetPosts(status ...int) Posts {
 	if len(status) > 0 {
 		s := status[0]
-		err := db.Select(&ps, "SELECT * FROM post WHERE status = $1 order by id", s)
+		err := db.Select(&ps, "SELECT * FROM post WHERE status = $1 order by created_at desc", s)
 		if err != nil {
 			if err == sql.ErrNoRows {
 				fmt.Println(err)
@@ -152,7 +152,7 @@ func (ps Posts) GetPosts(status ...int) Posts {
 			fmt.Println(err)
 		}
 	} else {
-		err := db.Select(&ps, "SELECT * FROM post ORDER BY id")
+		err := db.Select(&ps, "SELECT * FROM post ORDER BY created_at desc")
 		if err != nil && err != sql.ErrNoRows {
 			fmt.Println(err)
 		}
